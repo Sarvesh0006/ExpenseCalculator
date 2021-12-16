@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start Content-->
+<div class="row page-title">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb" class="float-right mt-1">
+            <button type="button" id="btn_add_expense" class="btn btn-outline-primary">Add Expense</button>
+        </nav>
+        <h4 class="mb-1 mt-0">Expense Charts</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mt-0 mb-3">Line with Data Labels</h4>
+
+                <div id="apex-line-1" class="apex-charts" dir="ltr"></div>
+            </div> <!-- end card-body -->
+        </div> <!-- end card-->
+    </div> <!-- end col-->
+</div>
+<!-- end row -->
+
+<div class="row">
+    <div class="col-xl-12">
+        <!-- Portlet card -->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mt-0 mb-3">Column Chart with Datalabels</h4>
+
+                <div id="apex-column-2" class="apex-charts" dir="ltr"></div>
+            </div> <!-- end card-body -->
+        </div> <!-- end card-->
+    </div> <!-- end col-->
+</div>
+<!-- end row -->
+<!-- sample modal content -->
+<div id="myModal" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Add Expenses</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <label>Title <span class="text-danger">*</span></label>
+                            <input type="text" id="txt_title" placeholder="Enter Title" class="form-control form-control-sm" />
+                        </div>
+                        <div class="col-md-12">
+                            <label>Amount <span class="text-danger">*</span></label>
+                            <input type="number" id="txt_amount" placeholder="Enter Amount" class="form-control form-control-sm" />
+                        </div>
+                        <div class="col-md-12">
+                            <label>Date <span class="text-danger">*</span></label>
+                            <input type="date" id="txt_date" placeholder="Enter Date" class="form-control form-control-sm bs-datepicker" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                <button type="button" id="btn_add" class="btn btn-primary">Add</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@section Scripts{
+    <script src="~/ProjectJS/Expense.js"></script>
+    <script>
+        $('body').on('click', '#btn_add_expense', function () {
+            $('#myModal').modal('show');
+        })
+    </script>
+} 
