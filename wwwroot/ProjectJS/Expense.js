@@ -35,6 +35,7 @@ $('body').on('click', '#btn_add', function () {
             success: function (data) {
                 if (data.responseCode == 200) {
                     alert('Successfully Done..');
+                    $('#myModal').modal('hide');
                 }
                 else {
                     alert(data.responseMessage);
