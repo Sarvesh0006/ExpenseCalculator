@@ -87,10 +87,10 @@ Apex = {
 				},
 				series: [{
 					name: "High - 2018",
-					data: [28, 29, 33, 36, 32, 32, 33]
+					data: [28, 29, 33, 36, 32, 32, 33, 22, 11, 5, 55]
 				}, {
 					name: "Low - 2018",
-					data: [12, 11, 14, 18, 17, 13, 13]
+					data: [12, 11, 14, 18, 17, 13, 13, 2, 3, 4, 5, 9]
 				}],
 				grid: {
 					row: {
@@ -104,7 +104,7 @@ Apex = {
 					size: 6
 				},
 				xaxis: {
-					categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+					categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 					title: {
 						text: "Month"
 					},
@@ -119,8 +119,8 @@ Apex = {
 					title: {
 						text: "Temperature"
 					},
-					min: 5,
-					max: 40
+					min: 1,
+					max: 60
 				},
 				legend: {
 					position: "top",

@@ -1,4 +1,13 @@
-﻿$('body').on('click', '#btn_login', function () {
+﻿$('body').keypress(function (e) {
+    var key = e.which;
+    if (key == 13)  // the enter key code
+    {
+        $('#btn_login').trigger('click');
+    }
+}); 
+
+
+$('body').on('click', '#btn_login', function () {
     $(this).attr('disabled');
     let UserName = $('#txt_userid').val();
     let Password = $('#txt_password').val();
