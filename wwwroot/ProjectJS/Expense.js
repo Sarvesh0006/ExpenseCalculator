@@ -1,23 +1,26 @@
 ﻿
 $('body').on('click', '#btn_add', function () {
-    debugger
-    $(this).attr('disabled');
+    $(this).attr("disabled");
+    
     let Title = $('#txt_title').val();
     let Amount = $('#txt_amount').val();
     let Date = $('#txt_date').val();
     if (Title == "") {
         alert("Enter Title..");
         $('#txt_title').focus();
+        $(this).removeAttr('disabled');
         return false;
     }
     if (Amount == "") {
         alert("Enter Amount..");
         $('#txt_amount').focus();
+        $(this).removeAttr('disabled');
         return false;
     }
     if (Date == "") {
         alert("Enter Date..");
         $('#txt_date').focus();
+        $(this).removeAttr('disabled');
         return false;
     }
 
@@ -33,6 +36,8 @@ $('body').on('click', '#btn_add', function () {
             dataType: 'json',
             contentType: 'application/json charset=UTF-8',
             success: function (data) {
+                debugger
+                $(this).removeAttr('disabled');
                 if (data.responseCode == 200) {
                     alert('Successfully Done..');
                     $('#myModal').modal('hide');
@@ -46,5 +51,4 @@ $('body').on('click', '#btn_add', function () {
             }
         });
     }
-    $(this).removeAttr('disabled');
 });
