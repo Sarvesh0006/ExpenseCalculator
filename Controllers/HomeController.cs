@@ -11,6 +11,7 @@ using ExpenseCalculator.Repos.Command;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using ExpenseCalculator.DataLayer;
 
 namespace ExpenseCalculator.Controllers
 {
@@ -57,5 +58,13 @@ namespace ExpenseCalculator.Controllers
             var data = await _m.Send(insertExpence);
             return Ok(data);
         }
+        [HttpGet]
+        public IActionResult SendMail()
+        {
+            var data = (dynamic)null;
+            data = Utility.SendEmail("yatul360@gmail.com", "Test Subject1", "Test Body1");
+            return Ok(data);
+        }
+
     }
 }
