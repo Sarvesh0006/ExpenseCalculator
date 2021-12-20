@@ -26,12 +26,13 @@ namespace ExpenseCalculator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            MyConnection.DefaultConnection = Configuration["ConnectionStrings:My_Connection"].ToString();
-            EmailMaster.HostServer = Configuration.GetSection("Email").GetSection("HostServer").Value.ToString();
-            EmailMaster.Email = Configuration.GetSection("Email").GetSection("Email").Value.ToString();
-            EmailMaster.Password = Configuration.GetSection("Email").GetSection("Password").Value.ToString();
+            string AppMode = Configuration.GetSection("AppMode").Value.ToString();
+            MyConnection.DefaultConnection = AppMode == "Test" ? Configuration["ConnectionStrings:Test_Connection"].ToString() : Configuration["ConnectionStrings:Live_Connection"].ToString();
+            EmailMaster.HostServer = Configuration.GetSection(AppMode).GetSection("Email").GetSection("HostServer").Value.ToString();
+            EmailMaster.Email = Configuration.GetSection(AppMode).GetSection("Email").GetSection("Email").Value.ToString();
+            EmailMaster.Password = Configuration.GetSection(AppMode).GetSection("Email").GetSection("Password").Value.ToString();
             //EmailMaster.EnableSsl = Convert.ToBoolean(Configuration.GetSection("SSLEnable").Value);
-            EmailMaster.Port = Convert.ToInt32(Configuration.GetSection("Email").GetSection("Port").Value);
+            EmailMaster.Port = Convert.ToInt32(Configuration.GetSection(AppMode).GetSection("Email").GetSection("Port").Value);
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddMediatR(typeof(Startup).Assembly);
