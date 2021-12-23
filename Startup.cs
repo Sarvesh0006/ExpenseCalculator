@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Hangfire;
 namespace ExpenseCalculator
 {
     public class Startup
@@ -42,6 +42,8 @@ namespace ExpenseCalculator
                 options.LogoutPath = "/Account/SignOut";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
             });
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration["ConnectionString:DefaultConnection"].ToString()));
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
